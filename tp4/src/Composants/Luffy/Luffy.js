@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 class Luffy extends Component {
     render() {
         return (
-            <Button id="luffy_btn" outline color="primary">Luffy</Button>
+            <Button id="luffy_btn" outline color="secondary">Luffy</Button>
         );
     }
 }

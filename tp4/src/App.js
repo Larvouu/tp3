@@ -5,10 +5,12 @@ import Profil from './Composants/Profil/Profil';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <NavBar/>
       <Profil/>
+      
     </div>
+    
   );
 }
 

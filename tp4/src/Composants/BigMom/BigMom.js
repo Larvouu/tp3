@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 class BigMom extends Component {
     render() {
         return (
-            <Button id="big_mom_button" outline color="danger">Big Mom</Button>
+            <Button id="big_mom_button" outline color="secondary">Big Mom</Button>
         );
     }
 }

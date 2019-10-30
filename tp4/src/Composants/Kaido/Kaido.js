@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 class Kaido extends Component {
     render() {
         return (
-            <Button id="kaido_btn" outline color="success">Kaido</Button>
+            <Button id="kaido_btn" outline color="secondary">Kaido</Button>
         );
     }
 }
