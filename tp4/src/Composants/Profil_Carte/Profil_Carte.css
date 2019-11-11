@@ -1,5 +1,8 @@
-#profil_carte_margin{
-    text-align: center;
+.profil_carte_margin{
     margin-top : 5%;
     margin-bottom: 5%;
+}
+
+.row{
+    margin-bottom : 8%;
 }
