@@ -13,11 +13,14 @@ class Profil_Publication extends Component {
         }
     }
     render() {
+
+        const profil_publication = this.props.profil_publication;
+
         return (
             <div>
                 {/*this.props.onSend*/}
                 <Card body className="text-center">
-                    <CardText id="card_text">{this.props.text}</CardText>
+                    <CardText id="card_text">{profil_publication.text}</CardText>
                     <Container>
                         <Row>
                             <Col sm={{size:5, offset:1}}>

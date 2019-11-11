@@ -2,25 +2,14 @@ import React, { Component } from 'react';
 import Profil_Carte from '../Profil_Carte/Profil_Carte';
 import Profil_Publication from '../Profil_Publication/Profil_Publication';
 import { Container, Row, Col } from 'reactstrap';
-import BigMom from '../Profil_Carte/BigMom.png';
-import Kaido from'../Profil_Carte/Kaido.png';
-import Luffy from '../Profil_Carte/Luffy.png';
 
 class Profil extends Component {
 
-    constructor(props)
-    {
-        super(props);
-        this.state = {
-            cEstSuper : this.props.cEstSuper
-        }
-    }
-    
-    /*setEtat = (value) => {
-        this.setState({etat : value})
-    }
-    */
+
     render() {
+
+        const {profil_carte, profil_publication} = this.props.profilData;
+
         return (
             <Container>
                 <Row>
@@ -28,13 +17,7 @@ class Profil extends Component {
                         sm="12" 
                         md={{ size: 6, offset: 3 }}
                     >
-                        <Profil_Carte 
-                            prenom="Charlotte"
-                            nom="Linlin" 
-                            date="14 Avril 1958" 
-                            img={BigMom} 
-                            alt="img Big Mom" 
-                        />
+                        <Profil_Carte profil_carte={profil_carte}/>
                     </Col>
                 </Row>
                 <Row>
@@ -42,10 +25,7 @@ class Profil extends Component {
                         sm="12" 
                         md={{ size: 6, offset: 3 }}
                     >
-                        <Profil_Publication 
-                            text="Je mangerai tous les gâteaux du monde !"
-                            like={0}
-                        />
+                        <Profil_Publication profil_publication={profil_publication} like={0}/>
                     </Col>
                 </Row>
             </Container>

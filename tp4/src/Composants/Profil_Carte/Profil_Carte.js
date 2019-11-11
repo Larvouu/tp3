@@ -9,6 +9,8 @@ import { Button, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactst
 
 class Profil_Carte extends Component {
 
+    
+
     constructor(props){
         super(props);
         this.state = {
@@ -68,30 +70,33 @@ class Profil_Carte extends Component {
     }
 
     render() {
+
+        const profil_carte = this.props.profil_carte;
+
         return (
            <div class="profil_carte_margin">
                {/* La carte de Pofil */}
                 <Card className="text-left" style={{backgroundColor: this.state.background_color}}>
-                    <CardImg top width="100%" src={this.props.img} alt={this.props.alt} />
+                    <CardImg top width="100%" src={profil_carte.img} alt={profil_carte.alt} />
                     {/* Le contenu = texte */}
                     <Container>
                         <Row className="row">
                             <Col sm={{size : 5, offset : 1}} md={{size : 5, offset : 1}}>
-                                {this.state.prenom}
+                                Prénom : {profil_carte.prenom}
                             </Col>
                             <Col sm={{size : 5, offset : 1}} md={{size : 5, offset : 1}}>
-                                {this.state.nom}
+                                Nom : {profil_carte.nom}
                             </Col>
                         </Row>
                         <Row className="row">
-                            <Col sm={{size : 5, offset : 1}} md={{size : 5, offset : 1}}>
-                                Anniversaire : {this.state.date}
+                            <Col sm={{size : 6, offset : 1}} md={{size : 6, offset : 1}}>
+                                Né(e) le : {profil_carte.date}
                             </Col>
                         </Row>
                         {/* Le bouton changer style */}
                         <CardBody className="text-right">
-                            <Button outline id="PopoverLegacy">Changer style</Button>
-                            {/* Le Popover du bouton */}
+                            <Button id="PopoverLegacy">Changer style</Button>
+                            {/* Le Popover du bouton. Popover Legacy = il dégage quand on clique à côté + on peut clicker dedans sans qu'il disparaisse */}
                             <UncontrolledPopover trigger="legacy" placement="right" target="PopoverLegacy">
                                 {/* Le titre du Popover */}
                                 <PopoverHeader className="text-center">Choisissez votre couleur !</PopoverHeader>
