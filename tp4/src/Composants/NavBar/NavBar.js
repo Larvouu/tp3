@@ -21,12 +21,17 @@ class NavBar extends Component {
         alert ('etat : '+ value);
     }
 
+    getEtat = () => {
+        return this.state.etat;
+    }
+
     render() {
+
         return (
             <div id="nav">
-                <Navbar_bouton id="big_mom_button" text="Big Mom" etat={() => this.changerEtat(0)}/>
-                <Navbar_bouton id="kaido_btn" text="Kaido" etat={() => this.changerEtat(1)}/>
-                <Navbar_bouton id="luffy_btn" text="Luffy" etat={() => this.changerEtat(2)}/>
+                <Navbar_bouton id="big_mom_button" text="Big Mom" etat={this.props.etat_zero}/>
+                <Navbar_bouton id="kaido_btn" text="Kaido" etat={this.props.etat_un}/>
+                <Navbar_bouton id="luffy_btn" text="Luffy" etat={this.props.etat_deux}/>
             </div>
         );
     }

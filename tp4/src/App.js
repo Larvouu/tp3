@@ -9,6 +9,21 @@ import React, { Component } from 'react';
 
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      etat_page : 0
+    }
+    this.changerEtat_page = this.changerEtat_page.bind(this);
+  }
+
+  changerEtat_page(value) {
+    this.setState(state => ({
+        etat_page : value
+      }));
+  } 
+
   render(){
     {/* Les données des différents profils, stockés dans un objet js*/}
     const profils = [
@@ -58,10 +73,13 @@ class App extends Component {
 
     return (
       <div>
-        <NavBar />
-        <Profil profilData={profils[1]}/>
-        
-        
+        {/*<NavBar navBarData={this.state.etat_page}/>
+        <Profil profilData={profils[this.state.etat_page]}/>*/}
+        <NavBar 
+          etat_zero={() => this.changerEtat_page(0)} 
+          etat_un={() => this.changerEtat_page(1)}
+          etat_deux={() => this.changerEtat_page(2)}/>
+        <Profil profilData={profils[this.state.etat_page]}/>
       </div>
       
     );
