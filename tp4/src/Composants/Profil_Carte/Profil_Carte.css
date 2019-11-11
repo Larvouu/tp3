@@ -6,3 +6,8 @@
 .row{
     margin-bottom : 8%;
 }
+
+#popover_btn_white{
+    background-color: white;
+    color: black;
+}

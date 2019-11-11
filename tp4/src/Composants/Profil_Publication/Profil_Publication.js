@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Card, Button, CardTitle, CardText } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
+import './Profil_Publication.css'
 
 class Profil_Publication extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            text : this.props.text
+            text : this.props.text,
+            like : this.props.like
         }
     }
     render() {
@@ -14,9 +17,17 @@ class Profil_Publication extends Component {
             <div>
                 {/*this.props.onSend*/}
                 <Card body className="text-center">
-                    <CardTitle>Dernière publication :</CardTitle>
-                    <CardText>{this.props.text}</CardText>
-                    <Button>C'est super !</Button>
+                    <CardText id="card_text">{this.props.text}</CardText>
+                    <Container>
+                        <Row>
+                            <Col sm={{size:5, offset:1}}>
+                                <Button onClick={() => this.setState({like : this.state.like + 1})}>C'est super !</Button>
+                            </Col>
+                            <Col>
+                                Likes : {this.state.like}
+                            </Col>
+                        </Row>
+                    </Container>
                 </Card>
 {/*
                 <Card body className="text-center">

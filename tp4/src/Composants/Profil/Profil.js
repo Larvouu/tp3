@@ -8,15 +8,15 @@ import Luffy from '../Profil_Carte/Luffy.png';
 
 class Profil extends Component {
 
-    /*constructor(props)
+    constructor(props)
     {
         super(props);
         this.state = {
-            etat : "bm"
+            cEstSuper : this.props.cEstSuper
         }
     }
     
-    setEtat = (value) => {
+    /*setEtat = (value) => {
         this.setState({etat : value})
     }
     */
@@ -32,7 +32,6 @@ class Profil extends Component {
                             prenom="Charlotte"
                             nom="Linlin" 
                             date="14 Avril 1958" 
-                            prime="???" 
                             img={BigMom} 
                             alt="img Big Mom" 
                         />
@@ -45,6 +44,7 @@ class Profil extends Component {
                     >
                         <Profil_Publication 
                             text="Je mangerai tous les gâteaux du monde !"
+                            like={0}
                         />
                     </Col>
                 </Row>
