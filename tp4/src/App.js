@@ -35,7 +35,7 @@ class App extends Component {
   render(){
     {/* Les données des différents profils, stockés dans un objet js*/}
 
-    let profils = [
+    const profils = [
       {
         profil_carte:{
           background_color : "#ffffff",
@@ -80,14 +80,16 @@ class App extends Component {
         }
       }
     ];
-
+    
     return (
       <div>
+        {/*<div>etat : {this.state.etat_page}</div>*/}
+        
         <NavBar 
           etat_zero={() => this.changerEtat_page(0)} 
           etat_un={() => this.changerEtat_page(1)}
           etat_deux={() => this.changerEtat_page(2)}/>
-        <Profil profilData={profils[this.state.etat_page]}/>
+        <Profil profilData={profils[this.state.etat_page]} publication_like={this.state.etat_page}/>
       </div>
       
     );
