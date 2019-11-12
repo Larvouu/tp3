@@ -19,166 +19,272 @@ class Profil_Carte extends Component {
             prenom : this.props.prenom,
             nom : this.props.nom,
             date : this.props.date,
-            background_color : this.props.backgroundColor
-        }
-        // Cette liaison est nécéssaire afin de permettre
-        // l'utilisation de `this` dans la fonction de rappel. (source : https://fr.reactjs.org/docs/handling-events.html)
-        this.handleClickBleu = this.handleClickBleu.bind(this);
-        this.handleClickRouge = this.handleClickRouge.bind(this);
-        this.handleClickVert = this.handleClickVert.bind(this);
-        this.handleClickGris = this.handleClickGris.bind(this);
-        this.handleClickViolet = this.handleClickViolet.bind(this);
-        this.handleClickJaune = this.handleClickJaune.bind(this);
-        this.handleClickBlanc = this.handleClickBlanc.bind(this);
+            background_color : this.props.backgroundColor,
+            background_colorBigMom : "#ffffff",
+            background_colorKaio : "#ffffff",
+            background_colorLuffy : "#ffffff"
+        }      
     }
 
-    
-    handleClickBleu() {
-        this.setState(state => ({
-            background_color : "#4b7bec"
-          }));
-    }
-    handleClickRouge() {
-        this.setState(state => ({
-            background_color : "#eb3b5a"
-          }));
-    }
-    handleClickVert() {
-        this.setState(state => ({
-            background_color : "#26de81"
-          }));
-    }
-    handleClickGris() {
-        this.setState(state => ({
-            background_color : "#d1d8e0"
-          }));
-    }
-    handleClickViolet() {
-        this.setState(state => ({
-            background_color : "#a55eea"
-          }));
-    }
-    handleClickJaune() {
-        this.setState(state => ({
-            background_color : "#fed330"
-          }));
-    }
-    handleClickBlanc() {
-        this.setState(state => ({
-            background_color : "#ffffff"
-          }));
-    }
 
     render() {
 
         const profil_carte = this.props.profil_carte;
+        // BIG MOM
+        if(this.props.quelProfil == 0){
+            return (
+            <div class="profil_carte_margin">
+                {/* La carte de Pofil */}
+                    <Card className="text-left" style={{backgroundColor: this.state.background_colorBigMom}}>
+                        <CardImg top width="100%" src={profil_carte.img} alt={profil_carte.alt} />
+                        {/* Le contenu = texte */}
+                        <Container>
+                            <Row className="row">
+                                <Col sm={{size : 5, offset : 1}} >
+                                    Prénom : {profil_carte.prenom}
+                                </Col>
+                                <Col sm={{size : 5, offset : 1}} >
+                                    Nom : {profil_carte.nom}
+                                </Col>
+                            </Row>
+                            <Row className="row">
+                                <Col sm={{size : 6, offset : 1}} >
+                                    Né(e) le : {profil_carte.date}
+                                </Col>
+                            </Row>
+                            {/* Le bouton changer style */}
+                            <CardBody className="text-right">
+                                <Button id="PopoverLegacy">Changer style</Button>
+                                {/* Le Popover du bouton. Popover Legacy = il dégage quand on clique à côté + on peut clicker dedans sans qu'il disparaisse */}
+                                <UncontrolledPopover trigger="legacy" placement="right" target="PopoverLegacy">
+                                    {/* Le titre du Popover */}
+                                    <PopoverHeader className="text-center">Choisissez votre couleur !</PopoverHeader>
+                                    {/* Le contenu du Popover = Les boutons */}
+                                    <PopoverBody>
+                                        <Container>
+                                            <Row>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#4b7bec"}} 
+                                                        onClick={() => this.setState({background_colorBigMom : "#4b7bec"})}>Bleu</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#eb3b5a"}} 
+                                                        onClick={() => this.setState({background_colorBigMom : "#eb3b5a"})}>Rouge</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#26de81"}} 
+                                                        onClick={() => this.setState({background_colorBigMom : "#26de81"})}>Vert</Button>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#d1d8e0"}} 
+                                                        onClick={() => this.setState({background_colorBigMom : "#d1d8e0"})}>Gris</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#a55eea"}} 
+                                                        onClick={() => this.setState({background_colorBigMom : "#a55eea"})}>Violet</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#fed330"}} 
+                                                        onClick={() => this.setState({background_colorBigMom : "#fed330"})}>Jaune</Button>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col sm={{size : 4, offset : 4}}>
+                                                    <Button 
+                                                        id="popover_btn_white"
+                                                        onClick={() => this.setState({background_colorBigMom : "#ffffff"})}>Blanc</Button>
+                                                </Col>
+                                            </Row>
+                                        </Container>
+                                    </PopoverBody>
+                                </UncontrolledPopover>
+                            </CardBody>
+                        </Container>
+                    </Card>
 
-        return (
-           <div class="profil_carte_margin">
-               {/* La carte de Pofil */}
-                <Card className="text-left" style={{backgroundColor: this.state.background_color}}>
-                    <CardImg top width="100%" src={profil_carte.img} alt={profil_carte.alt} />
-                    {/* Le contenu = texte */}
-                    <Container>
-                        <Row className="row">
-                            <Col sm={{size : 5, offset : 1}} >
-                                Prénom : {profil_carte.prenom}
-                            </Col>
-                            <Col sm={{size : 5, offset : 1}} >
-                                Nom : {profil_carte.nom}
-                            </Col>
-                        </Row>
-                        <Row className="row">
-                            <Col sm={{size : 6, offset : 1}} >
-                                Né(e) le : {profil_carte.date}
-                            </Col>
-                        </Row>
-                        {/* Le bouton changer style */}
-                        <CardBody className="text-right">
-                            <Button id="PopoverLegacy">Changer style</Button>
-                            {/* Le Popover du bouton. Popover Legacy = il dégage quand on clique à côté + on peut clicker dedans sans qu'il disparaisse */}
-                            <UncontrolledPopover trigger="legacy" placement="right" target="PopoverLegacy">
-                                {/* Le titre du Popover */}
-                                <PopoverHeader className="text-center">Choisissez votre couleur !</PopoverHeader>
-                                {/* Le contenu du Popover = Les boutons */}
-                                <PopoverBody>
-                                    <Container>
-                                        <Row>
-                                            <Col sm={{size : 4}}>
-                                                <Button 
-                                                    style={{backgroundColor : "#4b7bec"}} 
-                                                    onClick={this.handleClickBleu}>Bleu</Button>
-                                            </Col>
-                                            <Col sm={{size : 4}}>
-                                                <Button 
-                                                    style={{backgroundColor : "#eb3b5a"}} 
-                                                    onClick={this.handleClickRouge}>Rouge</Button>
-                                            </Col>
-                                            <Col sm={{size : 4}}>
-                                                <Button 
-                                                    style={{backgroundColor : "#26de81"}} 
-                                                    onClick={this.handleClickVert}>Vert</Button>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col sm={{size : 4}}>
-                                                <Button 
-                                                    style={{backgroundColor : "#d1d8e0"}} 
-                                                    onClick={this.handleClickGris}>Gris</Button>
-                                            </Col>
-                                            <Col sm={{size : 4}}>
-                                                <Button 
-                                                    style={{backgroundColor : "#a55eea"}} 
-                                                    onClick={this.handleClickViolet}>Violet</Button>
-                                            </Col>
-                                            <Col sm={{size : 4}}>
-                                                <Button 
-                                                    style={{backgroundColor : "#fed330"}} 
-                                                    onClick={this.handleClickJaune}>Jaune</Button>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col sm={{size : 4, offset : 4}}>
-                                                <Button 
-                                                    id="popover_btn_white"
-                                                    onClick={this.handleClickBlanc}>Blanc</Button>
-                                            </Col>
-                                        </Row>
-                                    </Container>
-                                </PopoverBody>
-                            </UncontrolledPopover>
-                        </CardBody>
-                    </Container>
-                </Card>
-{/*
-                <Card className="text-center">
-                    <CardImg top width="100%" src={Kaido} alt="Card image Kaido" />
-                    <CardBody>
-                        <CardTitle>Kaido aux Cent Bêtes</CardTitle>
-                        <CardSubtitle>24 décembre 1953</CardSubtitle>
-                        <CardText>Prime : ?</CardText>
-                        
-                    </CardBody>
-                    <CardBody className="text-right">
-                        <Button outline>Changer style</Button>
-                    </CardBody>
-                </Card>
+            </div>
+            );
+        }//fin cas profil big mom
 
-                <Card className="text-center">
-                    <CardImg top width="100%" src={Luffy} alt="Card image Kaido" />
-                    <CardBody>
-                        <CardTitle>Monkey D. Luffy</CardTitle>
-                        <CardSubtitle>22 juillet 1997</CardSubtitle>
-                        <CardText>Prime : 1.500.000 B</CardText>
-                        
-                    </CardBody>
-                    <CardBody className="text-right">
-                        <Button outline>Changer style</Button>
-                    </CardBody>
-                </Card>
-*/}
-           </div>
-        );
+        //KAIDO
+        if(this.props.quelProfil == 1){
+            return (
+            <div class="profil_carte_margin">
+                {/* La carte de Pofil */}
+                    <Card className="text-left" style={{backgroundColor: this.state.background_colorKaido}}>
+                        <CardImg top width="100%" src={profil_carte.img} alt={profil_carte.alt} />
+                        {/* Le contenu = texte */}
+                        <Container>
+                            <Row className="row">
+                                <Col sm={{size : 5, offset : 1}} >
+                                    Prénom : {profil_carte.prenom}
+                                </Col>
+                                <Col sm={{size : 5, offset : 1}} >
+                                    Nom : {profil_carte.nom}
+                                </Col>
+                            </Row>
+                            <Row className="row">
+                                <Col sm={{size : 6, offset : 1}} >
+                                    Né(e) le : {profil_carte.date}
+                                </Col>
+                            </Row>
+                            {/* Le bouton changer style */}
+                            <CardBody className="text-right">
+                                <Button id="PopoverLegacy">Changer style</Button>
+                                {/* Le Popover du bouton. Popover Legacy = il dégage quand on clique à côté + on peut clicker dedans sans qu'il disparaisse */}
+                                <UncontrolledPopover trigger="legacy" placement="right" target="PopoverLegacy">
+                                    {/* Le titre du Popover */}
+                                    <PopoverHeader className="text-center">Choisissez votre couleur !</PopoverHeader>
+                                    {/* Le contenu du Popover = Les boutons */}
+                                    <PopoverBody>
+                                        <Container>
+                                            <Row>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#4b7bec"}} 
+                                                        onClick={() => this.setState({background_colorKaido : "#4b7bec"})}>Bleu</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#eb3b5a"}} 
+                                                        onClick={() => this.setState({background_colorKaido : "#eb3b5a"})}>Rouge</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#26de81"}} 
+                                                        onClick={() => this.setState({background_colorKaido : "#26de81"})}>Vert</Button>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#d1d8e0"}} 
+                                                        onClick={() => this.setState({background_colorKaido : "#d1d8e0"})}>Gris</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#a55eea"}} 
+                                                        onClick={() => this.setState({background_colorKaido : "#a55eea"})}>Violet</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#fed330"}} 
+                                                        onClick={() => this.setState({background_colorKaido : "#fed330"})}>Jaune</Button>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col sm={{size : 4, offset : 4}}>
+                                                    <Button 
+                                                        id="popover_btn_white"
+                                                        onClick={() => this.setState({background_colorKaido : "#ffffff"})}>Blanc</Button>
+                                                </Col>
+                                            </Row>
+                                        </Container>
+                                    </PopoverBody>
+                                </UncontrolledPopover>
+                            </CardBody>
+                        </Container>
+                    </Card>
+
+            </div>
+            );
+        }//fin cas profil Kaido
+
+        //LUFFY
+        if(this.props.quelProfil == 2){
+            return (
+            <div class="profil_carte_margin">
+                {/* La carte de Pofil */}
+                    <Card className="text-left" style={{backgroundColor: this.state.background_colorLuffy}}>
+                        <CardImg top width="100%" src={profil_carte.img} alt={profil_carte.alt} />
+                        {/* Le contenu = texte */}
+                        <Container>
+                            <Row className="row">
+                                <Col sm={{size : 5, offset : 1}} >
+                                    Prénom : {profil_carte.prenom}
+                                </Col>
+                                <Col sm={{size : 5, offset : 1}} >
+                                    Nom : {profil_carte.nom}
+                                </Col>
+                            </Row>
+                            <Row className="row">
+                                <Col sm={{size : 6, offset : 1}} >
+                                    Né(e) le : {profil_carte.date}
+                                </Col>
+                            </Row>
+                            {/* Le bouton changer style */}
+                            <CardBody className="text-right">
+                                <Button id="PopoverLegacy">Changer style</Button>
+                                {/* Le Popover du bouton. Popover Legacy = il dégage quand on clique à côté + on peut clicker dedans sans qu'il disparaisse */}
+                                <UncontrolledPopover trigger="legacy" placement="right" target="PopoverLegacy">
+                                    {/* Le titre du Popover */}
+                                    <PopoverHeader className="text-center">Choisissez votre couleur !</PopoverHeader>
+                                    {/* Le contenu du Popover = Les boutons */}
+                                    <PopoverBody>
+                                        <Container>
+                                            <Row>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#4b7bec"}} 
+                                                        onClick={() => this.setState({background_colorLuffy : "#4b7bec"})}>Bleu</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#eb3b5a"}} 
+                                                        onClick={() => this.setState({background_colorLuffy : "#eb3b5a"})}>Rouge</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#26de81"}} 
+                                                        onClick={() => this.setState({background_colorLuffy : "#26de81"})}>Vert</Button>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#d1d8e0"}} 
+                                                        onClick={() => this.setState({background_colorLuffy : "#d1d8e0"})}>Gris</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#a55eea"}} 
+                                                        onClick={() => this.setState({background_colorLuffy : "#a55eea"})}>Violet</Button>
+                                                </Col>
+                                                <Col sm={{size : 4}}>
+                                                    <Button 
+                                                        style={{backgroundColor : "#fed330"}} 
+                                                        onClick={() => this.setState({background_colorLuffy : "#fed330"})}>Jaune</Button>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col sm={{size : 4, offset : 4}}>
+                                                    <Button 
+                                                        id="popover_btn_white"
+                                                        onClick={() => this.setState({background_colorLuffy : "#ffffff"})}>Blanc</Button>
+                                                </Col>
+                                            </Row>
+                                        </Container>
+                                    </PopoverBody>
+                                </UncontrolledPopover>
+                            </CardBody>
+                        </Container>
+                    </Card>
+
+            </div>
+            );
+        }//fin cas profil Luffy
+        else{
+            alert('erreur : état du profil = '+this.props.quelProfil);
+            return null;
+        }
     }
 }
 

@@ -18,7 +18,7 @@ class Profil extends Component {
                         sm="12" 
                         md={{ size: 6, offset: 3 }}
                     >
-                        <Profil_Carte profil_carte={profil_carte}/>
+                        <Profil_Carte profil_carte={profil_carte} quelProfil={this.props.publication_like}/>
                     </Col>
                 </Row>
                 <Row>
