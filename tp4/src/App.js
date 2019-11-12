@@ -13,7 +13,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      etat_page : 0
+      etat_page : 0, //Test de variable pour que chaque profil ait son propre nombre de like
+      like_big_mom : 0
     }
     this.changerEtat_page = this.changerEtat_page.bind(this);
   }
@@ -24,9 +25,17 @@ class App extends Component {
       }));
   } 
 
+  augmenterLikeBigMom(){
+    let cpt = this.state.like_big_mom;
+    this.setState(state => ({
+      like_big_mom : cpt +1
+    }));
+  }
+
   render(){
     {/* Les données des différents profils, stockés dans un objet js*/}
-    const profils = [
+
+    let profils = [
       {
         profil_carte:{
           background_color : "#ffffff",
@@ -38,7 +47,8 @@ class App extends Component {
 
         },
         profil_publication:{
-          text : "Je gouterai tous les gâteaux du monde !"
+          text : "Je gouterai tous les gâteaux du monde !",
+          like : this.state.like_big_mom
         }
       },
       {
@@ -73,8 +83,6 @@ class App extends Component {
 
     return (
       <div>
-        {/*<NavBar navBarData={this.state.etat_page}/>
-        <Profil profilData={profils[this.state.etat_page]}/>*/}
         <NavBar 
           etat_zero={() => this.changerEtat_page(0)} 
           etat_un={() => this.changerEtat_page(1)}

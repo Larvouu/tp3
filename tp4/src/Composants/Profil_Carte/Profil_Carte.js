@@ -81,15 +81,15 @@ class Profil_Carte extends Component {
                     {/* Le contenu = texte */}
                     <Container>
                         <Row className="row">
-                            <Col sm={{size : 5, offset : 1}} md={{size : 5, offset : 1}}>
+                            <Col sm={{size : 5, offset : 1}} >
                                 Prénom : {profil_carte.prenom}
                             </Col>
-                            <Col sm={{size : 5, offset : 1}} md={{size : 5, offset : 1}}>
+                            <Col sm={{size : 5, offset : 1}} >
                                 Nom : {profil_carte.nom}
                             </Col>
                         </Row>
                         <Row className="row">
-                            <Col sm={{size : 6, offset : 1}} md={{size : 6, offset : 1}}>
+                            <Col sm={{size : 6, offset : 1}} >
                                 Né(e) le : {profil_carte.date}
                             </Col>
                         </Row>
